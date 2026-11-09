@@ -2,7 +2,6 @@ import { useState } from 'react'
 import './App.css'
 
 function App() {
-
     const dane = [
         {id: 1, alt: "Auto Czerwone", filename: "src/assets/auto_czerwone.jpg", category: 3, downloads: 32},
         {id: 2, alt: "Maluch", filename: "src/assets/auto_maluch.jpg", category: 3, downloads: 45},
@@ -19,19 +18,26 @@ function App() {
         {id: 13, alt: "Słonecznik", filename: "src/assets/slonecznik.jpg", category: 1, downloads: 632},
         {id: 14, alt: "Tulipan", filename: "src/assets/tulipan.jpg", category: 1, downloads: 5432},
     ]
-
+    
     return (
         <>
-            <section>
+            <header>
                 <h2>Kategorie zdjęć</h2>
                 <section className={"switches"}>
                     <button>Kwiaty</button>
                     <button>Zwierzęta</button>
                     <button>Samochody</button>
                 </section>
-            </section>
+            </header>
             <main>
-                <img src={dane[0].filename} alt={"a"}/>
+                <section className={"gallery"}>
+                    {/*<img src={dane[0].filename} alt={"a"}/>*/}
+                    {
+                        dane.map(entry =>
+                            <img src={entry.filename} alt={entry.alt}/>
+                        )
+                    }
+                </section>
             </main>
         </>
     )
