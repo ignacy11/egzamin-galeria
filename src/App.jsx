@@ -35,6 +35,7 @@ function App() {
                     {
                         dane.map(entry =>
                             <img src={entry.filename} alt={entry.alt}/>
+                            // TODO: add downloads amount and download button
                         )
                     }
                 </section>

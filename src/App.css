@@ -25,6 +25,7 @@ main {
     display: flex;
     justify-content: center;
     border: 3px solid green;
+    /* TODO: fix main being too wide */
 }
 
 h2 {
