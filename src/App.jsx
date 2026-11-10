@@ -1,5 +1,5 @@
-import { useState } from 'react'
 import './App.css'
+import '../node_modules/bootstrap/dist/css/bootstrap.css'
 
 function App() {
     const dane = [
@@ -18,24 +18,41 @@ function App() {
         {id: 13, alt: "Słonecznik", filename: "src/assets/slonecznik.jpg", category: 1, downloads: 632},
         {id: 14, alt: "Tulipan", filename: "src/assets/tulipan.jpg", category: 1, downloads: 5432},
     ]
-    
+
+    function filterGallery() {
+        // TODO
+    }
+
     return (
         <>
             <header>
-                <h2>Kategorie zdjęć</h2>
+                <h1>Kategorie zdjęć</h1>
                 <section className={"switches"}>
-                    <button>Kwiaty</button>
-                    <button>Zwierzęta</button>
-                    <button>Samochody</button>
+                    <div className="form-check form-switch">
+                        <input className="form-check-input" type="checkbox" id="ctrId" onClick={filterGallery}/>
+                        <label className="form-check-label" htmlFor="ctrId">Kwiaty</label>
+                    </div>
+                    <div className="form-check form-switch">
+                        <input className="form-check-input" type="checkbox" id="ctrId2"/>
+                        <label className="form-check-label" htmlFor="ctrId2">Zwierzęta</label>
+                    </div>
+                    <div className="form-check form-switch">
+                        <input className="form-check-input" type="checkbox" id="ctrId3"/>
+                        <label className="form-check-label" htmlFor="ctrId3">Samochody</label>
+                    </div>
                 </section>
             </header>
             <main>
                 <section className={"gallery"}>
-                    {/*<img src={dane[0].filename} alt={"a"}/>*/}
                     {
                         dane.map(entry =>
-                            <img src={entry.filename} alt={entry.alt}/>
-                            // TODO: add downloads amount and download button
+                            <section className={"gallery-tile"}>
+                                <img className={"gallery-image"} src={entry.filename} alt={entry.alt}/>
+                                <section className={"gallery-tile-info-section"}>
+                                    <span className={"gallery-tile-download-count"}>{"Pobrań: " + entry.downloads}</span>
+                                    <button className={"gallery-tile-download-button"}>Pobierz</button>
+                                </section>
+                            </section>
                         )
                     }
                 </section>
