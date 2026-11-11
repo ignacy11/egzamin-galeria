@@ -57,8 +57,8 @@ h1 {
 }
 
 .gallery-image {
-    width: 600px;
-    height: 350px;
+    width: 98%;
+    height: 25rem;
     border-radius: 5px;
     margin: 5px;
 }
@@ -74,7 +74,7 @@ h1 {
     flex-direction: column;
     justify-content: center;
     gap: 0.75rem;
-    margin: 0.25rem 0 0.25rem 0;
+    margin: 0.25rem 0 0.5rem 0;
 }
 
 .gallery-tile-info-section * {
@@ -90,6 +90,7 @@ h1 {
 
 .gallery-tile-download-button {
     background-color: forestgreen;
+    color: #fafafa;
     padding: 0.6rem;
     border-radius: 5px;
     border: none;

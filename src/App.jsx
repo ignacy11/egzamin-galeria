@@ -27,9 +27,41 @@ function App() {
         ]
     )
 
-    function filterGallery() {
-        // TODO: change states for switches here
+    function handleSwitch(switchToHandle, checked) {
+        switch(switchToHandle) {
+            case "flowers":
+                setFlowersSwitchValue(checked)
+                filterGallery(checked, animalsSwitchValue, carsSwitchValue)
+                break
+            case "animals":
+                setAnimalsSwitchValue(checked)
+                filterGallery(flowersSwitchValue, checked, carsSwitchValue)
+                break
+            case "cars":
+                setCarsSwitchValue(checked)
+                filterGallery(flowersSwitchValue, animalsSwitchValue, checked)
+                break
+        }
+        filterGallery()
     }
+
+    function filterGallery(flowersState, animalsState, carsState) {
+
+        const switchStates = [flowersState, animalsState, carsState]
+        const matchingSwitches = []
+
+        for(let i = 0; i < switchStates.length; i++) {
+            matchingSwitches.push(switchStates[i])
+        }
+    }
+
+    /*function checkSwitches(matchingSwitches) {
+        if(matchingSwitches === undefined) {
+            console.log("empty")
+            return
+        }
+        console.log(matchingSwitches)
+    }*/
 
     return (
         <>
@@ -37,15 +69,15 @@ function App() {
                 <h1>Kategorie zdjęć</h1>
                 <section className={"switches"}>
                     <div className="form-check form-switch">
-                        <input className="form-check-input" type="checkbox" id="ctrId" onClick={filterGallery} checked={flowersSwitchValue}/>
+                        <input className="form-check-input" type="checkbox" id="ctrId" onChange={(event) => handleSwitch("flowers", event.target.checked)} defaultChecked={true}/>
                         <label className="form-check-label" htmlFor="ctrId">Kwiaty</label>
                     </div>
                     <div className="form-check form-switch">
-                        <input className="form-check-input" type="checkbox" id="ctrId2" onClick={filterGallery} checked={animalsSwitchValue}/>
+                        <input className="form-check-input" type="checkbox" id="ctrId2" onChange={(event) => handleSwitch("animals", event.target.checked)} defaultChecked={true}/>
                         <label className="form-check-label" htmlFor="ctrId2">Zwierzęta</label>
                     </div>
                     <div className="form-check form-switch">
-                        <input className="form-check-input" type="checkbox" id="ctrId3" onClick={filterGallery} checked={carsSwitchValue}/>
+                        <input className="form-check-input" type="checkbox" id="ctrId3" onChange={(event) => handleSwitch("cars", event.target.checked)} defaultChecked={true}/>
                         <label className="form-check-label" htmlFor="ctrId3">Samochody</label>
                     </div>
                 </section>
